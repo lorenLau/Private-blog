@@ -5,6 +5,6 @@ class Index
 {
     public function index()
     {
-        return 'think';
+        return 'thinkphp';
     }
 }
