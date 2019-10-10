@@ -6,5 +6,7 @@ use think\Controller;
 
 class Admin extends Controller
 {
-    //
+    public function index(){
+    	return '123';
+    }
 }
