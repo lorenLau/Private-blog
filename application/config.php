@@ -15,9 +15,9 @@ return [
     // +----------------------------------------------------------------------
 
     // 应用调试模式
-    'app_debug'              => false,
+    'app_debug'              => true,
     // 应用Trace
-    'app_trace'              => false,
+    'app_trace'              => true,
     // 应用模式状态
     'app_status'             => '',
     // 是否支持多模块
@@ -143,10 +143,21 @@ return [
     ],
 
     // 视图输出字符串内容替换
-    'view_replace_str'       => [],
+    'view_replace_str'       => [
+        //定义前台资源路径
+        '__INDEX_CSS__' => 'static/index/css',
+        '__INDEX_JS__'  => 'static/index/js',
+        '__INDEX_IMG__' => 'static/index/images',
+
+        //定义后台资源路径
+        '__ADMIN_CSS__' => 'static/admin/css',
+        '__ADMIN_JS__'  => 'static/admin/js',
+        '__ADMIN_IMG__' => 'static/admin/images',
+    ],
     // 默认跳转页面对应的模板文件
     'dispatch_success_tmpl'  => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',
     'dispatch_error_tmpl'    => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',
+
 
     // +----------------------------------------------------------------------
     // | 异常及错误设置
