@@ -3,9 +3,9 @@
 namespace app\admin\controller;
 
 use think\Controller;
-use app\admin\controller\Common as CommonController;
+use app\admin\controller\Common;
 
-class Index extends CommonController
+class Index extends Common
 {
     public function index(){
     	return view();

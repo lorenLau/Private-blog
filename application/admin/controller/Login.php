@@ -4,7 +4,7 @@ namespace app\admin\controller;
 
 use think\Controller;
 use think\Request;
-use think\session_commit();
+use think\Session;
 use app\admin\model\Login as Log;
 
 class Login extends Controller
