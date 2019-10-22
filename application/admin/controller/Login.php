@@ -11,6 +11,11 @@ class Login extends Controller
 {
 	//展示模板
     public function index(){
+
+        if(is_numeric(Session::get('user.id')) || !empty(Session::get('user'))){
+            return $this->success('已登陆', url('/admin/index'));
+        }
+        
     	return view();
     }
 
@@ -25,10 +30,15 @@ class Login extends Controller
 
     	if($status == 1){
     		Session::set('user', $username);
-    		$this->success('登录成功！', '/admin');
+    		$this->success('登录成功！', '/admin/index');
     	}else{
     		$this->error('用户名或者密码错误！', '/admin/login');
     	}
 
+    }
+
+    public function logout(){
+        session('user',null);
+        return $this->success('退出成功',url('/admin/login'));
     }
 }

@@ -8,7 +8,7 @@ class Common extends Controller
 {
     public function _initialize(){
     	if(!session('user')){
-    		$this->error('请先登录！', url('/admin/login'));
+    		return $this->error('请先登录！', url('/admin/login'));
     	}
     }
 }

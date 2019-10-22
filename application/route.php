@@ -10,5 +10,21 @@
 // +----------------------------------------------------------------------
 
 use think\Route;
-Route::rule('/admin','admin/Index/index');
+
+// 后台路由组
+Route::group('admin',[
+	'index'			=> 'admin/Index/index',
+	'/login' 		=> 'admin/Login/index',
+	'/do_login' 	=> 'admin/Login/do_login',
+	'/logout' 		=> 'admin/Login/logout',
+]);
+
+
+
+
+// 前台路由组
 Route::rule('/','index/Index/index');
+Route::group('index',[
+	'/' => 'index/Index/index',
+
+]);
