@@ -11,27 +11,36 @@ class Login extends Controller
 {
 	//展示模板
     public function index(){
+        return view();
+    }
+
+    // 判断用户是否已经登录
+    public function is_login(){
 
         if(is_numeric(Session::get('user.id')) || !empty(Session::get('user'))){
             return $this->success('已登陆', url('/admin/index'));
         }
-        
-    	return view();
     }
 
     // 处理登录
     public function do_login(Request $request){
+
+
     	$user_data = input('post.');
-    	$username = $user_data['username'];
-    	$password = $user_data['password'];
+
+        if(session('user') == $user_data['username']){
+            return $this->is_login();
+        }
 
     	$log = new Log;
-    	$status = $log->login($username, $password);
+    	$status = $log->login($user_data);
 
     	if($status == 1){
-    		Session::set('user', $username);
+    		Session::set('user', $user_data['username']);
     		$this->success('登录成功！', '/admin/index');
-    	}else{
+    	}elseif ($status ==3) {
+            $this->error('验证码错误', '/admin/login');
+        }else {
     		$this->error('用户名或者密码错误！', '/admin/login');
     	}
 

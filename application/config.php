@@ -251,4 +251,16 @@ return [
         'var_page'  => 'page',
         'list_rows' => 15,
     ],
+
+    // 验证码配置
+    'captcha' => [
+        'codeSet'   => '2345678abcdefhijkmnpqrstuvwxyzABCDEFGHJKLMNPQRTUVWXY',       //验证码字符集合 
+        'expire'    =>  600,                                                         // 验证码过期时间（s）  1800
+        'fontSize'  =>  25,                                                          // 验证码字体大小(px) 20
+        'useCurve'  =>  false,                                                       // 是否画混淆曲线 true
+        'useNoise'  =>  true,                                                        // 是否添加杂点  true
+        'length'    =>  4,                                                           // 验证码位数   4
+        'bg'        =>  [0,139,139],                                                 // 背景颜色    [243, 251, 254]
+        'reset'     =>  true,                                                        // 验证成功后是否重置   true
+    ],
 ];

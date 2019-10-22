@@ -27,11 +27,23 @@
             <hr class="hr15">
             <input name="password" lay-verify="required" placeholder="密码"  type="password" class="layui-input">
             <hr class="hr15">
+            <div class="layui-input-inline">
+                <input type="text" name="code" placeholder="验证码" autocomplete="off" class="layui-input">
+            </div>
+            <img src="{:captcha_src()}" alt="点击切换" id="code" />
+            <hr class="hr15">
             <input value="登录" lay-submit lay-filter="login" style="width:100%;" type="submit">
             <hr class="hr20" >
         </form>
     </div>
 
-
+    <script type="text/javascript">
+        $(function(){
+            $('#code').click(function(){
+                $(this).attr('src','{:captcha_src()}?c=' + Math.random());
+            })
+        })
+    </script>
 </body>
 </html>
+
